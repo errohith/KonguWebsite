@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Design tokens — Kongu Matrimony
+ * Kumkum maroon + turmeric gold on warm ivory: festive but restrained.
+ */
+@theme {
+  --color-ivory: #fbf7f0;
+  --color-sand: #f3ead9;
+  --color-ink: #2a1c18;
+  --color-muted: #6f5f57;
+  --color-line: #e6dac6;
+  --color-maroon-50: #fbf1f2;
+  --color-maroon-100: #f5dde0;
+  --color-maroon-600: #8f2433;
+  --color-maroon-700: #7a1f2b;
+  --color-maroon-800: #5f1721;
+  --color-gold-100: #f8ecd2;
+  --color-gold-400: #d9a843;
+  --color-gold-500: #c8962e;
+  --color-gold-700: #8a6418;
+  --color-leaf-600: #2f7a4b;
+  --color-leaf-50: #ecf6ef;
+  --color-danger-600: #b42318;
+  --color-danger-50: #fdeceb;
+
+  --font-sans: var(--font-body), var(--font-tamil), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-tamil), ui-serif, Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 2px;
+  }
+  [lang="ta"] body {
+    line-height: 1.7;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .kolam-divider {
+    height: 10px;
+    background-image: radial-gradient(circle, var(--color-gold-400) 1.5px, transparent 2px);
+    background-size: 14px 10px;
+    background-position: center;
+    opacity: 0.6;
+  }
+  .hero-bg {
+    background:
+      radial-gradient(1200px 400px at 85% -10%, rgb(200 150 46 / 0.22), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgb(122 31 43 / 0.18), transparent 60%),
+      linear-gradient(180deg, #fff9ef 0%, var(--color-ivory) 100%);
+  }
 }
